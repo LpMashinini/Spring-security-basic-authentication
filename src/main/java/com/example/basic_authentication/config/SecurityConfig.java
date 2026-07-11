@@ -17,18 +17,13 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-
-        http.csrf( csrf -> csrf.disable())
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> {
                     authorize.anyRequest().authenticated();
-                }).httpBasic(Customizer.withDefaults());
+                })
+                .httpBasic(Customizer.withDefaults());
 
         return http.build();
-
-        // user should be authenticated first to access all endpoints
     }
-
-
-
 }
